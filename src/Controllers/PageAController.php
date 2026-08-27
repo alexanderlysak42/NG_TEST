@@ -33,7 +33,7 @@ class PageAController
         $lastResult = null;
         $history = null;
 
-        require __DIR__ . '/../View/page_a.php';
+        require __DIR__ . '/../Views/page_a.php';
     }
 
     public function regenerate(string $token): void
@@ -56,7 +56,7 @@ class PageAController
 
         $this->registrationRepository->deactivate((int) $registration['id']);
 
-        require __DIR__ . '/../View/link_invalid.php';
+        require __DIR__ . '/../Views/link_invalid.php';
     }
 
     public function play(string $token): void
@@ -78,7 +78,7 @@ class PageAController
         $lastResult = $result;
         $history = null;
 
-        require __DIR__ . '/../View/page_a.php';
+        require __DIR__ . '/../Views/page_a.php';
     }
 
     public function history(string $token): void
@@ -92,7 +92,7 @@ class PageAController
         $lastResult = null;
         $history = $this->gameResultRepository->lastThree((int) $registration['id']);
 
-        require __DIR__ . '/../View/page_a.php';
+        require __DIR__ . '/../Views/page_a.php';
     }
 
     private function loadValidRegistration(string $token, bool $checkCsrf = false): ?array
@@ -101,7 +101,7 @@ class PageAController
 
         if ($registration === null || !$this->registrationRepository->isValid($registration)) {
             http_response_code(404);
-            require __DIR__ . '/../View/link_invalid.php';
+            require __DIR__ . '/../Views/link_invalid.php';
             return null;
         }
 

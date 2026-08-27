@@ -21,7 +21,7 @@ class RegistrationController
         $csrfToken = Csrf::token();
         $errors = [];
 
-        require __DIR__ . '/../View/home.php';
+        require __DIR__ . '/../Views/home.php';
     }
 
     public function register(): void
@@ -37,15 +37,15 @@ class RegistrationController
 
         $errors = [];
         if ($username === '' || mb_strlen($username) > 255) {
-            $errors[] = 'Укажите корректное имя пользователя';
+            $errors[] = 'Please provide a valid username';
         }
         if (!preg_match('/^\+?[0-9]{7,15}$/', $phoneNumber)) {
-            $errors[] = 'Укажите корректный номер телефона';
+            $errors[] = 'Please provide a valid phone number';
         }
 
         if ($errors) {
             $csrfToken = Csrf::token();
-            require __DIR__ . '/../View/home.php';
+            require __DIR__ . '/../Views/home.php';
             return;
         }
 
