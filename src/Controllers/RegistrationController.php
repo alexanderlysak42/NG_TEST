@@ -6,7 +6,6 @@ namespace App\Controllers;
 
 use App\Repositories\RegistrationRepository;
 use App\Support\Csrf;
-use Random\RandomException;
 
 class RegistrationController
 {
@@ -17,9 +16,6 @@ class RegistrationController
         $this->registrationRepository = new RegistrationRepository();
     }
 
-    /**
-     * @throws RandomException
-     */
     public function showForm(): void
     {
         $csrfToken = Csrf::token();
@@ -28,9 +24,6 @@ class RegistrationController
         require __DIR__ . '/../View/home.php';
     }
 
-    /**
-     * @throws RandomException
-     */
     public function register(): void
     {
         if (!Csrf::validate($_POST['csrf_token'] ?? null)) {

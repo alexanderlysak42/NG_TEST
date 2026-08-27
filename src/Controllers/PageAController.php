@@ -8,7 +8,6 @@ use App\Repositories\GameResultRepository;
 use App\Repositories\RegistrationRepository;
 use App\Services\GameService;
 use App\Support\Csrf;
-use Random\RandomException;
 
 class PageAController
 {
@@ -23,9 +22,6 @@ class PageAController
         $this->gameService = new GameService();
     }
 
-    /**
-     * @throws RandomException
-     */
     public function show(string $token): void
     {
         $registration = $this->loadValidRegistration($token);
@@ -40,9 +36,6 @@ class PageAController
         require __DIR__ . '/../View/page_a.php';
     }
 
-    /**
-     * @throws RandomException
-     */
     public function regenerate(string $token): void
     {
         $registration = $this->loadValidRegistration($token, checkCsrf: true);
@@ -66,9 +59,6 @@ class PageAController
         require __DIR__ . '/../View/link_invalid.php';
     }
 
-    /**
-     * @throws RandomException
-     */
     public function play(string $token): void
     {
         $registration = $this->loadValidRegistration($token, checkCsrf: true);
@@ -91,9 +81,6 @@ class PageAController
         require __DIR__ . '/../View/page_a.php';
     }
 
-    /**
-     * @throws RandomException
-     */
     public function history(string $token): void
     {
         $registration = $this->loadValidRegistration($token);

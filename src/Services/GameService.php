@@ -4,13 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use Random\RandomException;
-
 class GameService
 {
-    /**
-     * @throws RandomException
-     */
     public function play(): array
     {
         $number = random_int(1, 1000);

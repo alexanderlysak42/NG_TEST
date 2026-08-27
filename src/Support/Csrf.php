@@ -4,13 +4,8 @@ declare(strict_types=1);
 
 namespace App\Support;
 
-use Random\RandomException;
-
 class Csrf
 {
-    /**
-     * @throws RandomException
-     */
     public static function token(): string
     {
         if (empty($_SESSION['csrf_token'])) {

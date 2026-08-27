@@ -6,7 +6,6 @@ namespace App\Repositories;
 
 use App\Database;
 use PDO;
-use Random\RandomException;
 
 class RegistrationRepository
 {
@@ -17,9 +16,6 @@ class RegistrationRepository
         $this->db = Database::connection();
     }
 
-    /**
-     * @throws RandomException
-     */
     public function create(string $username, string $phoneNumber): array
     {
         $token = bin2hex(random_bytes(32));
@@ -50,9 +46,6 @@ class RegistrationRepository
         return $row ?: null;
     }
 
-    /**
-     * @throws RandomException
-     */
     public function regenerateToken(int $id): string
     {
         $token = bin2hex(random_bytes(32));
